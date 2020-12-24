@@ -25,6 +25,9 @@ const Index = () => {
               <Route path='cart' exact component={Cart}>
                 <Cart />
               </Route>
+              <Route path='cart' exact component={Cart}>
+                <Product />
+              </Route>
           </Switch>
       </Router>
       <div className='fixNav'>
