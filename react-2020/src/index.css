@@ -62,7 +62,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background: var(--clr-grey-10);
-  color: var(--clr-grey-1);
+  color: var(--clr-grey-3 );
   line-height: 1.5;
   font-size: 0.875rem;
 }
@@ -107,7 +107,7 @@ p {
 .btn {
   display: inline-block;
   background: var(--clr-primary-5);
-  color: var(--light-shadow);
+  color: var(--clr-orange-5);
   padding: 0.25rem 0.75rem;
   border-radius: var(--radius);
   border-color: transparent;
@@ -121,8 +121,8 @@ p {
   transition: var(--transition);
 }
 .btn:hover {
-  background: var(--clr-primary-5);
-  color: orange;
+  background: var(--clr-primary-6);
+  color: --clr-red-light;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 1.2rem;
 }
@@ -276,7 +276,6 @@ p {
 .product img {
   border-top-left-radius: var(--radius);
   border-top-right-radius: var(--radius);
-
   width: 100%;
   height: 15rem;
   object-fit: cover;

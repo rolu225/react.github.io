@@ -1,13 +1,25 @@
-import React, {useState, useEffect, useCallback, useMemo} from 'react'
-import {useFetch} from './index/call'
-import {BrowserRouter as Router, Route, Link, NavLink, Redirect, Switch} from 'react-router-dom'
-import {Auth} from 'react-use-auth'
+import React, {useState, useEffect, useCallback} from 'react'
+// import {useFetch} from './index/Call'
+import {BrowserRouter as Router, Route, Link, Redirect, Switch} from 'react-router-dom'
 //PAGE
-import Product from './Product'
-import Cart from './Cart'
-import Navbar from './Navbar'
 
 const url = 'https://course-api.com/javascript-store-products'
+
+const useFetch = (url) => {
+  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState([]);
+  const getProducts = useCallback(async () => {
+      const response = await fetch(url);
+      const products = await response.json();
+      setProducts(products);
+      setLoading(false);
+  }, [url]);
+
+  useEffect(() => {
+      getProducts();
+  },[url, getProducts])
+  return {loading, products};
+}
 
 const Index = () => {
   const {products} =useFetch(url)
@@ -18,57 +30,57 @@ const Index = () => {
   }, [cart])
   
   return (
-    <>
-      <Router>
-        <Navbar/>
-          <Switch>
-              <Route path='cart' exact component={Cart}>
-                <Cart />
-              </Route>
-          </Switch>
-      </Router>
-      <div className='fixNav'>
-        <h2>cart: {cart}</h2>
-      </div>
-      <br/>
-      <div>
-        <BigList products={products} addToCart={addToCart} />
-      </div>
-    </>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Redirect to='/dashboard' />
+          <Redirect to='/product' />
+        </Route>
+        <Route path='/dashboard' render={() => <BigList cart={cart} products={products} addToCart={addToCart} />} />
+      </Switch>
+    </Router>
   )
 }
 
-const BigList = React.memo(({ products, addToCart }) => {
+const BigList = React.memo(({ products, addToCart, cart }) => {
   return (
-    <section className='products'>
-      {products.map((product) =>{
-        return(
-          <SingleProduct
-            key={product.id}
-            {...product}
-            addToCart={addToCart}
-          ></SingleProduct>
-        )
-      })}
-    </section>
+    <div>
+      <div className='fixNav'>
+        <h1>cart:{cart}</h1>
+      </div>
+      <br/>
+      <div className='products'>
+        {products.map((product) =>{
+          return(
+            <SingleProduct
+              key={product.id}
+              {...product}
+              addToCart={addToCart}
+            ></SingleProduct>
+          )
+        })}
+      </div>
+    </div>
   );
 })
 
 export const SingleProduct = ({fields, addToCart}) => {
   let {name, price} = fields
-  price = price 
+  price = price / 100;
   const image = fields.image[0].url
   return (
-    <section className='btn product'>
-      <a href={`/product/${name}`} >
-        <img  src={image} alt={name} />
-        <h3>{name}</h3>
-        <h4>${price}</h4>
-      </a>
-      <section>
-        <button onClick={addToCart} className="btnn">Add to card</button>
+    <section className='product btn'>
+        <Link to={`/product/${name}`}>
+          <div>
+            <img src={image} alt={name} />
+            <h3>{name}</h3>
+            <h4>${price}</h4>
+          </div>
+        </Link>
+        <section>
+          <button onClick={addToCart} className="btnn">Add to card</button>
+        </section>
       </section>
-    </section>
   )
 }
 
