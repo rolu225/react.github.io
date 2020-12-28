@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useCallback, useMemo} from 'react'
 import {useFetch} from './index/call'
 import {BrowserRouter as Router, Route, Link, NavLink, Redirect, Switch} from 'react-router-dom'
-import {Auth} from 'react-use-auth'
 //PAGE
 import Product from './Product'
 import Cart from './Cart'
@@ -20,27 +19,27 @@ const Index = () => {
   return (
     <>
       <Router>
-        <Navbar/>
           <Switch>
-              <Route path='cart' exact component={Cart}>
-                <Cart />
+              <Route exact path="/">
+                <Redirect to='/dash' />
               </Route>
+              {/* <Route path='/cart' component={Cart}/> */}
+              <Route path='/dash' render={() => <BigList cart={cart} products={products} addToCart={addToCart} />} />
           </Switch>
       </Router>
-      <div className='fixNav'>
-        <h2>cart: {cart}</h2>
-      </div>
-      <br/>
-      <div>
+      {/* <div>
         <BigList products={products} addToCart={addToCart} />
-      </div>
+      </div> */}
     </>
   )
 }
 
-const BigList = React.memo(({ products, addToCart }) => {
+const BigList = React.memo(({ products, addToCart, cart }) => {
   return (
-    <section className='products'>
+    <div className='products'>
+      <div className='fixNav'>
+        <h1>cart: {cart}</h1>
+      </div>
       {products.map((product) =>{
         return(
           <SingleProduct
@@ -50,7 +49,7 @@ const BigList = React.memo(({ products, addToCart }) => {
           ></SingleProduct>
         )
       })}
-    </section>
+    </div>
   );
 })
 
@@ -59,16 +58,18 @@ export const SingleProduct = ({fields, addToCart}) => {
   price = price 
   const image = fields.image[0].url
   return (
-    <section className='btn product'>
-      <a href={`/product/${name}`} >
-        <img  src={image} alt={name} />
-        <h3>{name}</h3>
-        <h4>${price}</h4>
-      </a>
-      <section>
-        <button onClick={addToCart} className="btnn">Add to card</button>
+      <section className='btn product'>
+            <Link to='/product/1'>
+        <div>
+          <img src={image} alt={name} />
+          <h3>{name}</h3>
+          <h4>${price}</h4>
+        </div>
+            </Link>
+        <section>
+          <button onClick={addToCart} className="btnn">Add to card</button>
+        </section>
       </section>
-    </section>
   )
 }
 
