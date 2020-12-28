@@ -295,12 +295,12 @@ p {
   cursor: pointer;
 }
 
-.fixNav{
+#fixNav{
   position: sticky;
   top: 0;
   color: var(--clr-black);
-  float: right;
   font-family: inherit;
+  float: right;
 }
 .nav{
   float: left;
