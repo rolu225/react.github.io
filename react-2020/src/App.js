@@ -35,7 +35,13 @@ const App = () => {
         <Route exact path="/">
           <Redirect to='/dashboard' />
         </Route>
-        <Route path='/dashboard' render={() => <BigList cart={cart} products={products} addToCart={addToCart} />} />
+        {/* <Route path="/product">
+          <Redirect to='/product' />
+        </Route> */}
+        <Route exact path='/dashboard' render={() => <BigList cart={cart} products={products} addToCart={addToCart} />} />
+        <Route path='/product'>
+          <Product />
+        </Route>
       </Switch>
     </Router>
   )
@@ -66,23 +72,31 @@ const BigList = React.memo(({ products, addToCart, cart }) => {
   );
 })
 
-export const SingleProduct = ({fields, addToCart}) => {
+const SingleProduct = ({fields, addToCart}) => {
   let {name, price} = fields
   price = price / 100;
   const image = fields.image[0].url
   return (
     <section className='product btn'>
-      <Link to={`/product/${name}`}>
-          <div>
-            <img src={image} alt={name} />
-            <h3>{name}</h3>
-            <h4>${price}</h4>
-          </div>
-      </Link>
+        <Link to={`/product/${name}`}>
+            <div>
+              <img src={image} alt={name} />
+              <h3>{name}</h3>
+              <h4>${price}</h4>
+            </div>
+        </Link>
       <div>
         <button onClick={addToCart} className="btnn">Add to card</button>
       </div>
     </section>
+  )
+}
+
+function Product() {
+  return(
+    <div>
+      <h1>You just see this page! Sure <br/> That is product detail page.</h1>
+    </div>
   )
 }
 
