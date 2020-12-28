@@ -23,8 +23,14 @@ const Index = () => {
               <Route exact path="/">
                 <Redirect to='/dash' />
               </Route>
+<<<<<<< HEAD
               {/* <Route path='/cart' component={Cart}/> */}
               <Route path='/dash' render={() => <BigList cart={cart} products={products} addToCart={addToCart} />} />
+=======
+              <Route path='cart' exact component={Cart}>
+                <Product />
+              </Route>
+>>>>>>> 7e64a8b9fe5379736c9652b8212900128b56d847
           </Switch>
       </Router>
       {/* <div>
