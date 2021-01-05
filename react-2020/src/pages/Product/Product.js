@@ -1,9 +1,12 @@
 import React from 'react'
-import ProductImage from './Sections/ProductImage'
-import ProductInfo from './Sections/ProductInfo'
+import ProductImage from './Sections/ProductImage';
+import ProductInfo from './Sections/ProductInfo';
+import Navbar from '../Navbar/Navbar'
+import App from '../../App'
 
 const Product = () => {
-    return (
+    return (<>
+        <Navbar/>
         <div style={{width: '100%', height: '100%', padding: '1.8rem 4rem'}}>
             <div style={{display: 'flex', justifyContent: 'center'}}>
                 <h1>Product Detail</h1>
@@ -19,7 +22,7 @@ const Product = () => {
                 </div>
             </div>
         </div>
-    )
+    </>)
 }
 
 export default Product

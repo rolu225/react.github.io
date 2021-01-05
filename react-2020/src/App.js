@@ -1,8 +1,9 @@
-import React, {useState, useEffect, useCallback} from 'react'
+import React,  {Component, useState, useEffect, useCallback} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter as Router, Route, Link, Redirect, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 import Product from './pages/Product/Product'
-//PAGE
+import Cart from './pages/Cart/Cart'
+import Navbar from './pages/Navbar/Navbar'
 
 const url = 'https://course-api.com/react-store-products' /*'https://course-api.com/javascript-store-products'*/
 
@@ -22,23 +23,27 @@ const useFetch = (url) => {
   return {loading, products};
 }
 
-const App = () => {
+export const App = () => {
   const {products} = useFetch(url)
   const [cart, setCart] = useState(0)
 
   const addToCart = useCallback(() => {
     setCart(cart + 1)
+    console.log(`${cart + 1}`)
   }, [cart])
-  
+
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
+        {/* <Route exact path="/">
           <Redirect to='/dashboard' />
-        </Route>
-        <Route exact path='/dashboard' render={() => <BigList cart={cart} products={products} addToCart={addToCart} />} />
+        </Route> */}
+        <Route exact path='/' render={() => <BigList cart={cart} products={products} addToCart={addToCart} />} />
         <Route path='/product'>
           <Product />
+        </Route>
+        <Route path='/cart'>
+          <Cart/>
         </Route>
         <Route path='/*'>
           <Error />
@@ -48,15 +53,10 @@ const App = () => {
   )
 }
 
-//nav  
 const BigList = React.memo(({ products, addToCart, cart }) => {
   return (
     <div>
-      <div id='fixNav'>
-        <button type="button" className="btn btn-success" >
-          <span className="glyphicon glyphicon-shopping-cart">{cart}</span>
-        </button> 
-      </div>
+      <Navbar />
       <br/>
       <div className='products'>
         {products.map((product) =>{
@@ -149,8 +149,8 @@ const SingleProduct = ({name, price, image,/*fields,*/ addToCart}) => {
 
 function Error() {
   return(
-    <div style={{paddingTop: '200px', fontSize: '80px'}}>
-      <p style={{textAlign: 'center'}}>Page not found</p>
+    <div style={{paddingTop: '170px', fontSize: '55px'}}>
+      <p style={{textAlign: 'center', fontWeight: 'bold', color: '#1F1108'}}>The page you’re looking <br/> for can’t be found.</p>
     </div>
   )
 }

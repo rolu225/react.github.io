@@ -300,7 +300,7 @@ p {
   top: 0;
   color: var(--clr-black);
   font-family: inherit;
-  float: right;
+  background: #00008b;
 }
 .products{
   padding-top: 15px;
@@ -326,4 +326,6 @@ p {
 img{
   border-radius: 1%;
 }
-
+#dashboard:hover{
+  color: #44a6c6;
+}

@@ -15,7 +15,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.1",
     "react-use-auth": "^2.0.2",
-    "reactstrap": "^8.8.0"
+    "reactstrap": "^8.8.0",
+    "styled-components": "^5.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
