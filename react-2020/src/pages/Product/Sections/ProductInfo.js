@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {App} from '../../App'
 
 const ProductInfo = () => {
     return (
@@ -11,7 +10,7 @@ const ProductInfo = () => {
                 
             </h4>
             <div id='button-cart' style={{display: 'flex', justifyContent: 'center'}}>
-                <button onClick={addToCart} className='btn btn-danger'>
+                <button className='btn btn-danger'>
                     Add To Cart
                 </button>
                 <Link to='/' className='btn'>
