@@ -322,6 +322,8 @@ p {
 #button-card{
   padding: 170px;
   margin-top: 20px;
+  display: 'flex';
+  justify-content: 'center';
 }
 img{
   border-radius: 1%;
@@ -329,4 +331,21 @@ img{
 #dashboard:hover{
   /* color: #44a6c6; */
   color: yellow;
+}
+.btn-black{
+  background: transparent;
+  text-transform: capitalize;
+  font-size: 0.8rem !important;
+  color: var(--mainDark);
+  border-radius: 0 !important;
+  border: 0.1rem solid var(--mainDark) !important;
+}
+.btn-black:hover{
+  background: var(--mainDark) !important;
+  color: var(--mainWhite) !important;
+}
+.cart-icon{
+  cursor: pointer;
+  font-size: 1.2rem !important;
+  color: var(--mainYellow)
 }
