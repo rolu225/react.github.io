@@ -8,7 +8,7 @@ export default class ProductDetail extends Component {
         return (
             <ProductConsumer>
                 {value => {
-                    const { id, name, price, image, description } = value.detailProduct;
+                    const { id, name, price, image, description, inCart } = value.detailProduct;
                     return(
                         <div style={{width: '100%', height: '100%', padding: '1.8rem 4rem'}}>
                             <div style={{display: 'flex', justifyContent: 'center'}}>
@@ -31,10 +31,13 @@ export default class ProductDetail extends Component {
                                             </button>
                                         </Link>
                                         <button 
-                                            onClick={()=>{value.addToCart(id); }} 
+                                            disabled={inCart ? true : false}
+                                            onClick={()=>{
+                                                value.addToCart(id); 
+                                                value.openModal(id) }} 
                                             className='btn btn-danger'
                                         >
-                                            add to cart 
+                                            {inCart ? "in cart" : "add to cart"} 
                                         </button>
                                     </div>
                                 </div>

@@ -5,7 +5,7 @@ import Navbar from './components/Navbar'
 import Cart from './components/Cart/Cart'
 import Error from './components/Error'
 import ProductList from './components/ProductList'
-import Modal from './components/Modal'
+// import Modal from './components/Modal'
 export default class App extends Component {
   render() {
     return (
@@ -25,7 +25,6 @@ export default class App extends Component {
             <Error />
           </Route>
         </Switch>
-        <Modal/>
       </React.Fragment>
     )
   }

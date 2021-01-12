@@ -8,8 +8,8 @@ class ProductProvider extends Component {
         products: [],
         detailProduct: detailProduct,
         cart: [],
-        // modalOpen: true,
-        // modalProduct: detailProduct,
+        modalOpen: true,
+        modalProduct: detailProduct,
         cartSubTotal: 0,
         deliveryCharge: 0,
         cartTotal: 0,
@@ -42,6 +42,7 @@ class ProductProvider extends Component {
         const index = tempProducts.indexOf(this.getItem(id));
         const product = tempProducts[index];
         const price = product.price;
+        product.inCart = true;
         product.total = price;
         product.count = 1;
         // const company = product.company;
