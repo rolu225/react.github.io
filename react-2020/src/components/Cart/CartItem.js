@@ -6,8 +6,15 @@ export default function CartItem({item, value}) {
 
     return (
         <div className='row my-1 text-capitalize text-center'>
-            <div className='col-10 mx-auto col-lg-2'>
-                <img  src={image} alt='product' style={{width:'5rem', height:'5rem'}} />
+            <div className='col-10 mx-auto col-lg-2 article'>
+                <img className='thumb' src={image} alt='product' style={{
+                    width:'5rem%',
+                    height:'5rem',
+                    marginBottom: '15px',
+                    // backgroundSize: 'cover',
+                    // backgroundPosition: 'center',
+                    // backgroundRepeat: 'no-repeat'
+                }} />
             </div>
             <div className='col0 mx-auto col-lg-2'>
                 <span className='d-lg-none'>{name}</span>

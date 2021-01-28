@@ -52,8 +52,8 @@
 }
 
 *,
-::after,
-::before {
+:after,
+:before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -64,7 +64,9 @@ body {
   background: var(--clr-grey-10);
   color: var(--clr-grey-3 );
   line-height: 1.5;
-  font-size: 0.875rem;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0
 }
 ul {
   list-style-type: none;
@@ -94,9 +96,16 @@ p {
   max-width: var(--max-width);
 }
 
-@media screen and (min-width: 992px) {
-  .section {
-    width: 95vw;
+@media (min-width: 992px) {
+  .col-lg-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+@media (min-width: 768px){
+  .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
   }
 }
 
@@ -106,8 +115,8 @@ p {
 }
 .btn {
   display: inline-block;
-  background: var(--clr-primary-5);
-  color: var(--clr-orange-7);
+  background: var(--lightBlue);
+  color: var(--mainDark);
   padding: 0.25rem 0.75rem;
   border-radius: var(--radius);
   border-color: transparent;
@@ -122,7 +131,7 @@ p {
 }
 .btn:hover {
   background: var(--clr-primary-6);
-  color: --clr-red-light;
+  color: red;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 1.2rem;
 }
@@ -264,11 +273,11 @@ p {
   display: grid;
   gap: 2rem;
 }
-@media screen and (min-width: 576px) {
+/* @media screen and (min-width: 576px) {
   .products {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
-}
+} */
 .product {
   background: var(--clr-grey-9);
   border-radius: var(--radius);
@@ -348,4 +357,47 @@ img{
   cursor: pointer;
   font-size: 1.2rem !important;
   color: var(--mainYellow)
+}
+.button-cart:hover{
+  background-color: #ffa400;
+}
+
+.product{
+  position: relative;
+  width: 100%;
+  padding-right: 10px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  display: block
+}
+.product_item{
+  position: relative;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  background: transparent;
+  cursor: pointer;
+}
+.product_img{
+  width: 100%;
+  vertical-align: middle;
+  border-style: none;
+}
+div{
+  display: block;
+}
+#go-to-top{
+  position: fixed;
+  width: 38px;
+  height: 38px;
+  border: 2px solid #ed6d00;
+  background-color: #ed6d00;
+  border-radius: 4px;
+  right: 22px;
+  bottom: 88px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 90;
 }

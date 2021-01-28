@@ -13,9 +13,31 @@ class ProductProvider extends Component {
         cartSubTotal: 0,
         deliveryCharge: 0,
         cartTotal: 0,
+        scroll: false
     };
     componentDidMount() {
         this.setProducts(); 
+        const scrollComponent = this;
+        document.addEventListener("scroll", function(e){
+            scrollComponent.toggleVisibility();
+        })
+    };
+    toggleVisibility () {
+        if(window.pageYOffset > 300) {
+            this.setState({
+                scroll: true
+            })
+        } else {
+            this.setState({
+                scroll: false
+            })
+        }
+    };
+    scrollToTop () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
     }
     setProducts = () => {
         let tempProducts = [];
@@ -98,7 +120,6 @@ class ProductProvider extends Component {
                 this.addTotal();
             })
         }
-        
     };
     remove = id => {
         let tempProducts = [...this.state.products];
@@ -154,7 +175,9 @@ class ProductProvider extends Component {
                 plus: this.plus,
                 minus: this.minus,
                 remove: this.remove,
-                clear: this.clear
+                clear: this.clear,
+                toggleVisibility: this.toggleVisibility,
+                scrollToTop: this.scrollToTop
             }}>
                 {this.props.children}
             </ProductContext.Provider>
