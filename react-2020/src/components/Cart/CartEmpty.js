@@ -4,7 +4,7 @@ export default function CartEmpty() {
     return (
         <div className=''>
             <h1>
-                Cart Empty
+                Cart Emptyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
             </h1>
         </div>
     )

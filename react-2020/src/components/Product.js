@@ -15,7 +15,7 @@ export default class Product extends Component {
                             <div className='row'>
                                 <div className='col-lg-3 col-md-6'>
                                     <Link className='product_item product' to='/detail'>
-                                        <img className='product_img' src={image} alt={name} width='50%' />
+                                        <img className='product_img' src={image} alt={name} />
                                         <h3>{name}</h3>
                                         <h4>$ {price}</h4>
                                     </Link>
@@ -33,17 +33,15 @@ export default class Product extends Component {
                             </div>
                         </div>
                     </div>
-                    <div id='go-to-top'>
+                    {/* <div id='go-to-top'>
                         {scroll && (
                             <div onClick={() => this.scrollToTop()}>
                                 up
                             </div>
                         )}
-                    </div>
+                    </div> */}
                 </>)}
-
             </ProductConsumer>
-
         )
     }
 }
